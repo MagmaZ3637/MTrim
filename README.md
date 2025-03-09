@@ -3,13 +3,13 @@
 A PocketMine-MP plugin that allows players to add trims to their armor using a UI.
 
 ## 📷 Pictures!
-![](pictures\1.png)
+![pictures\1.png](https://github.com/MagmaZ3637/MTrim/blob/main/pictures/1.png?raw=true)
 
-![](pictures\2.png)
+![pictures\2.png](https://github.com/MagmaZ3637/MTrim/blob/main/pictures/2.png?raw=true)
 
-![](pictures\3.png)
+![pictures\3.png](https://github.com/MagmaZ3637/MTrim/blob/main/pictures/3.png?raw=true)
 
-![](pictures\4.png)
+![pictures\4.png](https://github.com/MagmaZ3637/MTrim/blob/main/pictures/4.png?raw=true)
 
 ## 🎮 Features
 1. [x] Easily add trims to armor via UI.
