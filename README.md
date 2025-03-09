@@ -1,37 +1,98 @@
-# 🧥 MTrims
-***
-**Simple Plugin For LibTrimArmor. This plugin can add trims to your server**
+# 🧥 MTrim
 
-<img src="https://cdn.discordapp.com/attachments/1070949916022669405/1258376516253782056/Screenshot_20240704-175544.png?ex=66887ab4&is=66872934&hm=f7c1016dea5f930b1ba440c654f76b625638ca8597f3057bdd72f5812f2a7c6d&">
+A PocketMine-MP plugin that allows players to add trims to their armor using a UI.
 
-[![Lint](https://poggit.pmmp.io/ci.shield/MagmaZ3637/MTrims/MTrims)](https://poggit.pmmp.io/ci/MagmaZ3637/MTrims/MTrims)
+## 📷 Pictures!
+![](pictures\1.png)
+
+![](pictures\2.png)
+
+![](pictures\3.png)
+
+![](pictures\4.png)
+
+## 🎮 Features
+1. [x] Easily add trims to armor via UI.
+
+2. [x] Compatible with all materials.
+ 
+3. [x] Supports a variety of trim types.
+ 
+4. [x] Uses player XP as currency for applying trims.
+
+## 📥 Installation
+1. Download the `.phar` file from poggit.
+2. Place the `MTrim.phar` file in the `plugins` folder of your PocketMine-MP server.
+3. Restart the server, and the plugin is ready to use!
+
+## 🔧 Commands
+| Command  | Description |
+|------------|-----------|
+| `/trim` | Opens the armor trim UI for customization. |
+
+## 🔑 Permissions
+| Permission  | Default | Description |
+|------------|---------|-----------|
+| `trim.use` | true    | Allows players to use the /trim command. |
+
+## ⚙️ Requirements
+- [FormAPI](https://github.com/jojoe77777/FormAPI)
+- [LibTrimArmor](https://github.com/KRUNCHSHooT/LibTrimArmor)
+
+## 💾 Config
+**config.yml**
+```yaml
+#
+#  ███╗░░░███╗████████╗██████╗░██╗███╗░░░███╗
+#  ████╗░████║╚══██╔══╝██╔══██╗██║████╗░████║
+#  ██╔████╔██║░░░██║░░░██████╔╝██║██╔████╔██║
+#  ██║╚██╔╝██║░░░██║░░░██╔══██╗██║██║╚██╔╝██║
+#  ██║░╚═╝░██║░░░██║░░░██║░░██║██║██║░╚═╝░██║
+#  ╚═╝░░░░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚═╝╚═╝░░░░░╚═╝
+#  Mtrim | Config file | MagmaZ3637
+
+# Formats:
+#  {player} = player name
+#  {xp} = player xp
+#  {prefix} = prefix
+#  & = §
+
+# The prefix that will appear in every plugin message.
+prefix: "&e[ MTrim ] &r"
+
+# The default price for trimming armor (you can change it as needed).
+# If you want the price to be free, change it to 0.
+price: 3
+
+# The type of message used to notify the player.
+# TOAST = small popup above the hotbar.
+# MESSAGE = chat message.
+message-type: "TOAST"
 
 
-## 🔰 IMAGES
-***
-<img src="https://cdn.discordapp.com/attachments/1070949916022669405/1258376516681728031/Screenshot_20240704-175756.png?ex=66887ab5&is=66872935&hm=7d6ba743bce6277dca495aefb58e91734da6ca94d12ce98a135c10c33b6aa467&">
+# FORM AREA
+# The title displayed in the armor trim form.
+title-form: "Trim Armor"
 
-<img src="https://cdn.discordapp.com/attachments/1070949916022669405/1258376517126193233/Screenshot_20240704-175802.png?ex=66887ab5&is=66872935&hm=9536c1bc9a3d21e24fcf82a6502eafe3d0811a62994119d5c119a45876cde6ff&">
+# Label for selecting the armor trim pattern.
+label-pattern: "Choose Trim Pattern"
 
-## 💾 INSTALLATION
-***
-1. Download `latest` MTrims and `virion` depend
-2. Place MTrims file into `plugins` directory and virion depend into `virion` directory
-3. Restart The Server
+# Label for selecting the armor trim material.
+label-material: "Choose Trim Material"
 
-## ❗ VIRION DEPEND
-***
-[LibTrimArmor](https://github.com/KRUNCHSHooT/LibTrimArmor)
 
-[FormAPI](https://github.com/jojoe77777/FormAPI)
+# MESSAGE AREA
+# Message shown when the player tries to trim a non-armor item.
+item-is-not-armor: "&cThis item is not an armor!"
 
-## 🎮 COMMAND AND PERMISSION
-***
+# Message shown when the armor trim is successfully applied.
+armor-trim-success: "&aArmor trimmed successfully!"
 
-| Command   | Permission | Aliases       |
-|-----------|------------|---------------|
-| `trimsui` |    `trim.use`        | `trims / tui` |
+# Message shown when the player does not have enough XP to trim armor.
+not-enough-xp: "&cYou don't have enough XP!"
 
-## 📃 LICENCE
-***
-[Apache Licence 2.0](https://github.com/MagmaZ3637/MTrims?tab=Apache-2.0-1-ov-file#)
+
+```
+
+## 📜 License
+[Apache License 2.0](https://github.com/MagmaZ3637/MTrim/blob/main/LICENSE)
