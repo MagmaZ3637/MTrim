@@ -1,0 +1,49 @@
+#
+#  ███╗░░░███╗████████╗██████╗░██╗███╗░░░███╗
+#  ████╗░████║╚══██╔══╝██╔══██╗██║████╗░████║
+#  ██╔████╔██║░░░██║░░░██████╔╝██║██╔████╔██║
+#  ██║╚██╔╝██║░░░██║░░░██╔══██╗██║██║╚██╔╝██║
+#  ██║░╚═╝░██║░░░██║░░░██║░░██║██║██║░╚═╝░██║
+#  ╚═╝░░░░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚═╝╚═╝░░░░░╚═╝
+#  Mtrim | Config file | MagmaZ3637
+
+# Formats:
+#  {player} = player name
+#  {xp} = player xp
+#  {prefix} = prefix
+#  & = §
+
+# The prefix that will appear in message.
+prefix: "&e[ MTrim ] &r"
+
+# The default price for trimming armor (you can change it as needed).
+# If you want the price to be free, change it to 0.
+price: 3
+
+# The type of message used to notify the player.
+# TOAST = small popup above the hotbar.
+# MESSAGE = chat message.
+message-type: "TOAST"
+
+
+# FORM AREA
+# The title displayed in the armor trim form.
+title-form: "Trim Armor"
+
+# Label for selecting the armor trim pattern.
+label-pattern: "Choose Trim Pattern"
+
+# Label for selecting the armor trim material.
+label-material: "Choose Trim Material"
+
+
+# MESSAGE AREA
+# Message shown when the player tries to trim a non-armor item.
+item-is-not-armor: "&cThis item is not an armor!"
+
+# Message shown when the armor trim is successfully applied.
+armor-trim-success: "&aArmor trimmed successfully!"
+
+# Message shown when the player does not have enough XP to trim armor.
+not-enough-xp: "&cYou don't have enough XP!"
+
