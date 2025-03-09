@@ -22,7 +22,7 @@ A PocketMine-MP plugin that allows players to add trims to their armor using a U
 
 ## 📥 Installation
 1. Download the `.phar` file from poggit.
-2. Place the `MTrim.phar` file in the `plugins` folder of your PocketMine-MP server.
+2. Place the `MTrim.phar` file in the `plugins` folder of your server.
 3. Restart the server, and the plugin is ready to use!
 
 ## 🔧 Commands
