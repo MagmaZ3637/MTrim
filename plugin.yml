@@ -1,16 +1,16 @@
-name: MTrims
+name: MTrim
 api: 5.0.0
 version: 1.0.0
-main: MagmaZ3637\trim\Main
+main: MagmaZ3637\MTrim\Main
 author: MagmaZ3637
+description: A PocketMine-MP plugin that allows players to add trims to their armor using a UI.
 
 commands:
-  trimsui:
-    description: Open Trim UI
+  trim:
     permission: trim.use
-    aliases: ["trimui", "tui"]
+    description: Open the armor trim UI for customization.
 
 permissions:
   trim.use:
-    description: Open Trim UI
-    default: op
+    default: true
+    description: Allow player to use the trim command.
