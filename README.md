@@ -20,6 +20,8 @@ A PocketMine-MP plugin that allows players to add trims to their armor using a U
  
 4. [x] Uses player XP as currency for applying trims.
 
+5. [x] Interact with the Smithing Table to access the trim UI.
+
 ## 📥 Installation
 1. Download the `.phar` file from poggit.
 2. Place the `MTrim.phar` file in the `plugins` folder of your server.
@@ -33,7 +35,7 @@ A PocketMine-MP plugin that allows players to add trims to their armor using a U
 ## 🔑 Permissions
 | Permission  | Default | Description |
 |------------|---------|-----------|
-| `trim.use` | true    | Allows players to use the /trim command. |
+| `trim.use` | true    | Allow player to use the /trim command. |
 
 ## ⚙️ Requirements
 - [FormAPI](https://github.com/jojoe77777/FormAPI)
