@@ -25,6 +25,9 @@ price: 3
 # MESSAGE = chat message.
 message-type: "TOAST"
 
+# Smithing Table Interaction Configuration
+smithing-table: true
+
 
 # FORM AREA
 # The title displayed in the armor trim form.
@@ -35,9 +38,6 @@ label-pattern: "Choose Trim Pattern"
 
 # Label for selecting the armor trim material.
 label-material: "Choose Trim Material"
-
-# Smithing Table Interaction Configuration
-smithing-table: true
 
 
 # MESSAGE AREA
