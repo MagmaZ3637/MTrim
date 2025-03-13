@@ -2,18 +2,22 @@
 
 namespace MagmaZ3637\MTrim;
 
+use pocketmine\block\SmithingTable;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\item\Armor;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\event\player\PlayerInteractEvent;
 
 use jojoe77777\FormAPI\CustomForm;
 
 use KRUNCHSHooT\LibTrimArmor\LibTrimArmor;
 use KRUNCHSHooT\LibTrimArmor\MaterialType;
 use KRUNCHSHooT\LibTrimArmor\PatternType;
+
+use wavycraft\legacyachievements\AchievementManager;
 
 class Main extends PluginBase implements Listener
 {
@@ -47,6 +51,23 @@ class Main extends PluginBase implements Listener
         return true;
     }
 
+    public function onInteract(PlayerInteractEvent $event): bool
+    {
+        $player = $event->getPlayer();
+        $smithing = $event->getBlock();
+        $armor = $player->getInventory()->getItemInHand();
+        $interact = $this->getConfig()->get("smithing-table");
+        if ($smithing instanceof SmithingTable && $interact) {
+            $event->cancel();
+            if ($armor instanceof Armor) {
+                $this->getFormInput($player);
+            } else {
+                $this->messageHandler($player, $this->getConfig()->get("item-is-not-armor"));
+            }
+        }
+        return true;
+    }
+
     public function getFormInput(Player $player): void
     {
         $form = new CustomForm(function (Player $player, array $data = null){
@@ -56,19 +77,18 @@ class Main extends PluginBase implements Listener
             $material = $data[0];
             $pattern = $data[1];
             $armor = $player->getInventory()->getItemInHand();
-            if (!is_null($pattern) && !is_null($material)) {
-                if ($player->getXpManager()->getXpLevel() >= $this->getConfig()->get("price")) {
-                    if ($armor instanceof Armor) {
-                        LibTrimArmor::create($armor, $this->getMaterial($material), $this->getPattern($pattern));
-                        $player->getInventory()->setItemInHand($armor);
-                        $this->messageHandler($player, $this->getConfig()->get("armor-trim-success"));
-                        $player->getXpManager()->subtractXpLevels($this->getConfig()->get("price"));
-                    }
+            if ($player->getXpManager()->getXpLevel() >= $this->getConfig()->get("price")) {
+                if ($armor instanceof Armor) {
+                    LibTrimArmor::create($armor, $this->getMaterial($material), $this->getPattern($pattern));
+                    $player->getInventory()->setItemInHand($armor);
+                    $this->messageHandler($player, $this->getConfig()->get("armor-trim-success"));
+                    $player->getXpManager()->subtractXpLevels($this->getConfig()->get("price"));
+                    AchievementManager::getInstance()->unlockAchievement($player, "smithing");
                 } else {
-                    $this->messageHandler($player, $this->getConfig()->get("not-enough-xp"));
+                    $this->messageHandler($player, $this->getConfig()->get("item-is-not-armor"));
                 }
             } else {
-                $this->messageHandler($player, $this->getConfig()->get("item-is-not-armor"));
+                $this->messageHandler($player, $this->getConfig()->get("not-enough-xp"));
             }
             return true;
         });
@@ -126,7 +146,7 @@ class Main extends PluginBase implements Listener
         $prefix = $this->getConfig()->get("prefix");
         if ($msg == "MESSAGE") {
             $player->sendMessage($this->replaceHandler($player, $message));
-        } else if ($msg == "TOAST") {
+        } else {
             $player->sendToastNotification($this->replaceHandler($player, $prefix), $this->replaceHandler($player, $message));
         }
     }
@@ -136,7 +156,7 @@ class Main extends PluginBase implements Listener
         $replace = [
             "{player}" => $player->getName(),
             "{xp}" => $player->getXpManager()->getXpLevel(),
-            "{prefix}" => str_replace(["&", "{player}", "{px}"], ["§", $player->getName(), $player->getXpManager()->getXpLevel()], $this->getConfig()->get("prefix")),
+            "{prefix}" => str_replace(["&", "{player}", "{xp}"], ["§", $player->getName(), $player->getXpManager()->getXpLevel()], $this->getConfig()->get("prefix")),
             "&" => "§"
         ];
         return strtr($message, $replace);
