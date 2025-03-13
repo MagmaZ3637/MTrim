@@ -17,8 +17,6 @@ use KRUNCHSHooT\LibTrimArmor\LibTrimArmor;
 use KRUNCHSHooT\LibTrimArmor\MaterialType;
 use KRUNCHSHooT\LibTrimArmor\PatternType;
 
-use wavycraft\legacyachievements\AchievementManager;
-
 class Main extends PluginBase implements Listener
 {
     public function onEnable(): void {
@@ -83,7 +81,6 @@ class Main extends PluginBase implements Listener
                     $player->getInventory()->setItemInHand($armor);
                     $this->messageHandler($player, $this->getConfig()->get("armor-trim-success"));
                     $player->getXpManager()->subtractXpLevels($this->getConfig()->get("price"));
-                    AchievementManager::getInstance()->unlockAchievement($player, "smithing");
                 } else {
                     $this->messageHandler($player, $this->getConfig()->get("item-is-not-armor"));
                 }
