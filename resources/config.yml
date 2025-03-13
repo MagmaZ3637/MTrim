@@ -36,6 +36,9 @@ label-pattern: "Choose Trim Pattern"
 # Label for selecting the armor trim material.
 label-material: "Choose Trim Material"
 
+# Smithing Table Interaction Configuration
+smithing-table: true
+
 
 # MESSAGE AREA
 # Message shown when the player tries to trim a non-armor item.
