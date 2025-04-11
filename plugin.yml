@@ -7,10 +7,10 @@ description: A PocketMine-MP plugin that allows players to add trims to their ar
 
 commands:
   trim:
-    permission: mtrim.use.command
+    permission: mtrim.command
     description: Open the armor trim UI for customization.
 
 permissions:
-  mtrim.use.command:
+  mtrim.command:
     default: true
     description: Allow player to use the trim command.
