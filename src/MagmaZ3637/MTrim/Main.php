@@ -22,16 +22,6 @@ class Main extends PluginBase implements Listener
     public function onEnable(): void {
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        if ($this->getConfig()->get("message-type") == "TOAST" || $this->getConfig()->get("message-type") == "MESSAGE") {
-            $this->getLogger()->info("message type is valid. Plugin Enabled!");
-        } else {
-            $this->getLogger()->error("Invalid message type! Use TOAST or MESSAGE. Plugin Disabled");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
-        }
-        if ($this->getConfig()->get("price") < 0) {
-            $this->getLogger()->error("Invalid price! The price must be 0 or higher. Plugin Disabled");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
-        }
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
@@ -75,8 +65,8 @@ class Main extends PluginBase implements Listener
             $material = $data[0];
             $pattern = $data[1];
             $armor = $player->getInventory()->getItemInHand();
-            if ($player->getXpManager()->getXpLevel() >= $this->getConfig()->get("price")) {
-                if ($armor instanceof Armor) {
+            if ($armor instanceof Armor) {
+                if ($player->getXpManager()->getXpLevel() >= $this->getConfig()->get("price")) {
                     LibTrimArmor::create($armor, $this->getMaterial($material), $this->getPattern($pattern));
                     $player->getInventory()->setItemInHand($armor);
                     $this->messageHandler($player, $this->getConfig()->get("armor-trim-success"));
@@ -84,8 +74,13 @@ class Main extends PluginBase implements Listener
                 } else {
                     $this->messageHandler($player, $this->getConfig()->get("item-is-not-armor"));
                 }
+                if ($player->getXpManager()->getXpLevel() <= $this->getConfig()->get("price")) {
+                    LibTrimArmor::create($armor, $this->getMaterial($material), $this->getPattern($pattern));
+                    $player->getInventory()->setItemInHand($armor);
+                    $this->messageHandler($player, $this->getConfig()->get("armor-trim-success"));
+                }
             } else {
-                $this->messageHandler($player, $this->getConfig()->get("not-enough-xp"));
+                $this->messageHandler($player, $this->getConfig()->get("item-is-not-armor"));
             }
             return true;
         });
