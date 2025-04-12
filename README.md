@@ -35,7 +35,7 @@ A PocketMine-MP plugin that allows players to add trims to their armor using a U
 ## 🔑 Permissions
 | Permission  | Default | Description |
 |------------|---------|-----------|
-| `trim.use` | true    | Allow player to use the /trim command. |
+| `mtrim.command` | true    | Allow player to use the /trim command. |
 
 ## ⚙️ Requirements
 - [FormAPI](https://github.com/jojoe77777/FormAPI)
